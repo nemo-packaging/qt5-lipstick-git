@@ -6,7 +6,7 @@ pkgname=qt5-lipstick-git
 _srcname=qt5-lipstick
 _project=aa13q # mer-core fork
 _branch=aa13q-alpm-qt5.14
-pkgver=0.32.21.r11.g82aeca3f
+pkgver=0.32.21.r13.ge4c44b21
 pkgrel=1
 pkgdesc="QML toolkit for homescreen creation"
 arch=('x86_64' 'aarch64')
@@ -28,20 +28,11 @@ pkgver() {
   ) 2>/dev/null
 }
 
-prepare() {
-    cd "${srcdir}/${pkgname}"
-    # TODO: upstream
-    sed -i "s|libsystemd-daemon|libsystemd|g" ./src/compositor/alienmanager/alienmanager.pri
-    sed -i "s|libsystemd-daemon|libsystemd|g" ./src/compositor/compositor.pri
-    #sed -i "s|libsystemd-daemon|libsystemd|g" ./tools/simple-compositor/simple-compositor.pro
-    sed -i "s|libsystemd-daemon|libsystemd|g" ./src/src.pro
-}
-
 build() {
   cd "${srcdir}/${pkgname}"
   mkdir -p build
   cd build
-  qmake -after "SUBDIRS-=doc" ..
+  qmake ..
   make
 }
 
