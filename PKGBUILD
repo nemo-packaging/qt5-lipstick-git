@@ -1,12 +1,13 @@
 ## $Id$
 # Contributor: Alexey Andreyev <aa13q@ya.ru>
+# Contributor: Bart Ribbers <bribbers@disroot.org>
 # Maintainer: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
 
 pkgname=qt5-lipstick-git
 _srcname=qt5-lipstick
-_project=aa13q # mer-core fork
-_branch=aa13q-alpm-qt5.14
-pkgver=0.32.21.r13.ge4c44b21
+_project=neochapay # mer-core fork
+_branch=jb42170_qt5.12
+pkgver=0.34.16.r11.g0d4d35bd
 pkgrel=1
 pkgdesc="QML toolkit for homescreen creation"
 arch=('x86_64' 'aarch64')
@@ -17,8 +18,8 @@ makedepends=('git' 'nemo-keepalive-git' 'qt5-resource-git' 'libsystemd' 'nemo-qm
 optdepends=()
 provides=("${_srcname}")
 conflicts=()
-source=("${pkgname}::git+${url}")
-sha256sums=('SKIP')
+source=("${pkgname}::git+${url}" "update-plugin-registertypes-to-qt5.14.patch")
+sha256sums=('SKIP' 'fbfb364e8f808f05bd923553de735e92f5a908c3a62b4be71d84d32b899d8176')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -26,6 +27,11 @@ pkgver() {
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   ) 2>/dev/null
+}
+
+prepare() {
+    cd "${srcdir}/${pkgname}"
+    patch -p1 --input="${srcdir}/update-plugin-registertypes-to-qt5.14.patch"
 }
 
 build() {
