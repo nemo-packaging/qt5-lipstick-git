@@ -13,7 +13,7 @@ pkgdesc="QML toolkit for homescreen creation"
 arch=('x86_64' 'aarch64')
 url="https://git.sailfishos.org/$_project/lipstick#branch=$_branch"
 license=('LGPL-2.1-only')
-depends=('qt5-declarative' 'qt5-sensors' 'qt5-wayland' 'qt5-systems' 'nemo-keepalive-git' 'qt5-resource-git' 'libsystemd' 'nemo-qml-plugin-contentaction-git' 'mce-headers-git' 'qt5-mce-git' 'qt5-ngfd-git' 'ssu-sysinfo-git' 'qt5-usb-moded-git' 'nemo-qml-plugin-devicelock-git' 'nemo-qml-plugin-systemsettings-git' 'libdsme' 'libxkbcommon')
+depends=('qt5-sensors' 'qt5-wayland' 'nemo-keepalive-git' 'qt5-resource-git' 'libsystemd' 'nemo-qml-plugin-contentaction-git' 'mce-headers-git' 'qt5-ngfd-git' 'nemo-qml-plugin-devicelock-git' 'nemo-qml-plugin-systemsettings-git')
 makedepends=('git' 'qt5-tools' 'doxygen' 'graphviz')
 optdepends=()
 provides=("${_srcname}")
